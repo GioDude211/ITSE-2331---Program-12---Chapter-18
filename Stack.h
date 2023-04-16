@@ -10,12 +10,20 @@ public:
 		return stack.front();
 	}
 
-	void push(constT& pushValue) {
+	void push(const T& pushValue) {
 		stack.push_front(pushValue);
 	}
 
 	void pop() {
 		stack.pop_front();
+	}
+
+	void clear() {
+		
+		while (!stack.empty()) {
+			stack.pop_back();
+		}
+	
 	}
 
 	bool isEmpty() const {
