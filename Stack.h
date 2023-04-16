@@ -12,10 +12,21 @@ public:
 
 	void push(const T& pushValue) {
 		stack.push_front(pushValue);
+			
+		
 	}
 
 	void pop() {
-		stack.pop_front();
+		if (!stack.empty()) {
+			stack.pop_front();
+		}
+
+		else {
+			std::cout << "Unable to pop due to stack being empty." << std::endl;
+		}
+			
+		
+		
 	}
 
 	void clear() {

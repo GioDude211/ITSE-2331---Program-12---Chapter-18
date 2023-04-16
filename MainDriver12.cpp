@@ -33,9 +33,17 @@ int main() {
 		std::cout << "2 - Double" << std::endl;
 		std::cout << "3 - String" << std::endl;
 		std::cout << "0 - Exit Program" << std::endl;
-		std::getline(std::cin, enterInputUser);
 
-		enterInputUserInt = stoi(enterInputUser);
+		try {
+			std::getline(std::cin, enterInputUser);
+			enterInputUserInt = stoi(enterInputUser);
+		}
+
+		catch (...) {
+			std::cout << "Exception occured at the main function, invalid input by user." << std::endl;
+		}
+
+		
 
 		if (enterInputUserInt == 1) {
 			std::cout << "Creating Int Stack..." << std::endl;
@@ -86,58 +94,102 @@ void manipulateStackInt(Stack<int> stackInt) {
 		std::cout << "4 - Clear" << std::endl;
 		std::cout << "5 - Empty" << std::endl;
 		std::cout << "0 - Exit" << std::endl;
-		std::getline(std::cin, enterInputUser);
+		
 
-		enterInputUserInt = stoi(enterInputUser);
+		try {
+			std::getline(std::cin, enterInputUser);
+			enterInputUserInt = stoi(enterInputUser);
+		}
+
+		catch (...) {
+			std::cout << "Exception occured at the manipulateStackInt function, invalid input by user." << std::endl;
+		}
+		
 
 		//PUSH STACK
 		if (enterInputUserInt == 1) {
-			std::cout << "Pushing Stack..." << std::endl;
-			std::getline(std::cin, enterInputUser);
+			
+			try {
+				std::cout << "Pushing Stack..." << std::endl;
+				std::getline(std::cin, enterInputUser);
+				stackInt.push(stoi(enterInputUser));
+			}
 
-			stackInt.push(stoi(enterInputUser));
+			catch(...){
+				std::cout << "An exception occured at the main file for int stack push. Exception Nr." << std::endl;
 
+			}
 
 		}
 
 		//POP STACK
 		else if (enterInputUserInt == 2) {
-			std::cout << "Popping Stack..." << std::endl;
-			stackInt.pop();
+
+			try {
+				std::cout << "Popping Stack..." << std::endl;
+				stackInt.pop();
+			}
+			
+			catch (...) {
+				std:: cout << "An exception occured at the main file for int stack pop." << std::endl;
+			}
 
 		}
 		//TOP STACK
 		else if (enterInputUserInt == 3) {
-			std::cout << "Top of Stack..." << std::endl;
-			stackInt.top();
+			try {
+				std::cout << "Top of Stack..." << std::endl;
+				stackInt.top();
+			}
+			catch (...) {
+				std::cout << "An exception occured at the main file for int stack top." << std::endl;
+			}
 		}
 
 		//CLEAR STACK
 		else if (enterInputUserInt == 4) {
 			
-			std::cout << "Clearing Stack..." << std::endl;
+			try {
+				std::cout << "Clearing Stack..." << std::endl;
 
-			stackInt.clear();
+				stackInt.clear();
+			}
+
+			catch (...) {
+				std::cout << "An exception occured at the main file for the int stack clear." << std::endl;
+			}
+			
 
 		}
 
 		//EMPTY STACK
 		else if (enterInputUserInt == 5) {
-			std::cout << "Checking if Stack is Empty..." << std::endl;
-			
-			if (!stackInt.isEmpty()) {
-				std::cout << "Int Stack is NOT empty" << std::endl;
-			}
 
-			else {
-				std::cout << "Int Stack is empty" << std::endl;
+			try {
+				std::cout << "Checking if Stack is Empty..." << std::endl;
+
+				if (!stackInt.isEmpty()) {
+					std::cout << "Int Stack is NOT empty" << std::endl;
+				}
+
+				else {
+					std::cout << "Int Stack is empty" << std::endl;
+				}
+			}
+			
+			catch (...) {
+				std::cout << "Exception occured at the main file for the int stack empty." << std::endl;
 			}
 
 		}
 		//EXIT 
-		else {
+		else if (enterInputUserInt == 0) {
 			std::cout << "EXITING INT STACK OPERATIONS..." << std::endl;
 			exitOuterLoop = true;
+		}
+
+		else {
+			std::cout << "INVALID INPUT..." << std::endl;
 		}
 
 	} while (exitOuterLoop != true);
@@ -158,59 +210,102 @@ void manipulateStackDb(Stack<double> stackDouble) {
 		std::cout << "4 - Clear" << std::endl;
 		std::cout << "5 - Empty" << std::endl;
 		std::cout << "0 - Exit" << std::endl;
-		std::getline(std::cin, enterInputUser);
+		try {
+			std::getline(std::cin, enterInputUser);
+			enterInputUserInt = stoi(enterInputUser);
+		}
 
-		enterInputUserInt = stoi(enterInputUser);
+		catch (...) {
+			std::cout << "Exception occured at the manipulateStackDb function, invalid input by user." << std::endl;
+		}
+
 
 		//PUSH STACK
 		if (enterInputUserInt == 1) {
-			std::cout << "Pushing Stack..." << std::endl;
-			std::getline(std::cin, enterInputUser);
 
-			stackDouble.push(std::stod(enterInputUser));
+			try {
+				std::cout << "Pushing Stack..." << std::endl;
+				std::getline(std::cin, enterInputUser);
+
+				stackDouble.push(std::stod(enterInputUser));
+			}
+			catch (...) {
+				std::cout << "Exception occured at the main file for the double stack push." << std::endl;
+			}
 
 
 		}
 
 		//POP STACK
 		else if (enterInputUserInt == 2) {
-			std::cout << "Popping Stack..." << std::endl;
-			stackDouble.pop();
+
+			try {
+				std::cout << "Popping Stack..." << std::endl;
+				stackDouble.pop();
+			}
+			
+			catch(...){
+				std::cout << "Exception occured at the main file for the double stack pop." << std::endl;
+			}
 
 		}
 		//TOP STACK
 		else if (enterInputUserInt == 3) {
-			std::cout << "Top of Stack..." << std::endl;
-			stackDouble.top();
+			try {
+				std::cout << "Top of Stack..." << std::endl;
+				stackDouble.top();
+			}
+
+			catch (...) {
+				std::cout << "Exception occured at the main file for the double stack top." << std::endl;
+			}
+			
 		}
 
 		//CLEAR STACK
 		else if (enterInputUserInt == 4) {
 
-			std::cout << "Clearing Stack..." << std::endl;
+			try {
+				std::cout << "Clearing Stack..." << std::endl;
 
-			stackDouble.clear();
+				stackDouble.clear();
+			}
+			
+			catch (...) {
+				std::cout << "Exception occured at the main file for the double stack clear." << std::endl;
+			}
 
 		}
 
 		//EMPTY STACK
 		else if (enterInputUserInt == 5) {
-			std::cout << "Checking if Stack is Empty..." << std::endl;
 
-			if (!stackDouble.isEmpty()) {
-				std::cout << "Double Stack is NOT empty" << std::endl;
+			try {
+				std::cout << "Checking if Stack is Empty..." << std::endl;
+
+				if (!stackDouble.isEmpty()) {
+					std::cout << "Double Stack is NOT empty" << std::endl;
+				}
+
+				else {
+					std::cout << "Double Stack is empty" << std::endl;
+				}
 			}
-
-			else {
-				std::cout << "Double Stack is empty" << std::endl;
+			
+			catch (...) {
+				std::cout << "Exception occured at the main file for the double stack empty check." << std::endl;
 			}
 
 		}
 		//EXIT 
-		else {
+		else if(enterInputUserInt == 0) {
 			std::cout << "EXITING DOUBLE STACK OPERATIONS..." << std::endl;
 			exitOuterLoop = true;
 		}
+
+		else {
+			std::cout << "INVALID INPUT..." << std::endl;
+			}
 
 	} while (exitOuterLoop != true);
 }
@@ -231,58 +326,100 @@ void manipulateStackStr(Stack<std::string> stackStr) {
 		std::cout << "4 - Clear" << std::endl;
 		std::cout << "5 - Empty" << std::endl;
 		std::cout << "0 - Exit" << std::endl;
-		std::getline(std::cin, enterInputUser);
+		try {
+			std::getline(std::cin, enterInputUser);
+			enterInputUserInt = stoi(enterInputUser);
+		}
 
-		enterInputUserInt = stoi(enterInputUser);
+		catch (...) {
+			std::cout << "Exception occured at the manipulateStackStr function, invalid input by user." << std::endl;
+
+		}
 
 		//PUSH STACK
 		if (enterInputUserInt == 1) {
-			std::cout << "Pushing Stack..." << std::endl;
-			std::getline(std::cin, enterInputUser);
 
-			stackStr.push(enterInputUser);
+			try {
+				std::cout << "Pushing Stack..." << std::endl;
+				std::getline(std::cin, enterInputUser);
 
+				stackStr.push(enterInputUser);
+			}
+			
+			catch (...) {
+				std::cout << "Exception occured at the main file for the string stack push." << std::endl;
+			}
 
 		}
 
 		//POP STACK
 		else if (enterInputUserInt == 2) {
-			std::cout << "Popping Stack..." << std::endl;
-			stackStr.pop();
+			try {
+				std::cout << "Popping Stack..." << std::endl;
+				stackStr.pop();
 
+			}
+
+			catch (...) {
+				std::cout << "Exception occured at the main file for the string stack pop." << std::endl;
+			}
+			
 		}
 		//TOP STACK
 		else if (enterInputUserInt == 3) {
-			std::cout << "Top of Stack..." << std::endl;
-			stackStr.top();
+			try {
+				std::cout << "Top of Stack..." << std::endl;
+				stackStr.top();
+			}
+
+			catch (...) {
+				std::cout << "Exception occured at the main file for the string stack top." << std::endl;
+			}
 		}
 
 		//CLEAR STACK
 		else if (enterInputUserInt == 4) {
 
-			std::cout << "Clearing Stack..." << std::endl;
+			try {
+				std::cout << "Clearing Stack..." << std::endl;
 
-			stackStr.clear();
+				stackStr.clear();
 
+			}
+			
+			catch (...) {
+				std::cout << "Exception occured at the main file for the string stack clear." << std::endl;
+			}
 		}
 
 		//EMPTY STACK
 		else if (enterInputUserInt == 5) {
-			std::cout << "Checking if Stack is Empty..." << std::endl;
 
-			if (!stackStr.isEmpty()) {
-				std::cout << "String Stack is NOT empty" << std::endl;
+			try {
+				std::cout << "Checking if Stack is Empty..." << std::endl;
+
+				if (!stackStr.isEmpty()) {
+					std::cout << "String Stack is NOT empty" << std::endl;
+				}
+
+				else {
+					std::cout << "String Stack is empty" << std::endl;
+				}
 			}
 
-			else {
-				std::cout << "String Stack is empty" << std::endl;
+			catch (...) {
+				std::cout << "Exception occured at the main file for the string stack Empty check." << std::endl;
 			}
 
 		}
 		//EXIT 
-		else {
+		else if(enterInputUserInt == 0){
 			std::cout << "EXITING STRING STACK OPERATIONS..." << std::endl;
 			exitOuterLoop = true;
+		}
+
+		else {
+			std::cout << "INVALID INPUT..." << std::endl;
 		}
 
 	} while (exitOuterLoop != true);
